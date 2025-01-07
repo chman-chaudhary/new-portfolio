@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import ProjectCard from "../components/ProjectCard";
+import React, { useRef, useState } from "react";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   const projects = [
@@ -115,10 +115,15 @@ const Projects = () => {
     },
   ];
 
-  const [top, setTop] = useState(20);
+  const [top, setTop] = useState(10);
+  const projectsRef = useRef(null);
 
   return (
-    <div className="bg-[rgb(10,10,10)] h-[100vh] w-full overflow-hidden">
+    <div
+      name="projects"
+      className="bg-[rgb(10,10,10)] h-[100vh] w-full overflow-visible"
+      ref={projectsRef}
+    >
       <div className="relative h-auto">
         {projects.map((project, idx) => (
           <ProjectCard
@@ -126,8 +131,9 @@ const Projects = () => {
             key={idx}
             top={top}
             setTop={setTop}
-            zIndex={idx + 10}
+            zIndex={idx}
             animationDelay={idx * 0.2}
+            projectsRef={projectsRef}
           />
         ))}
       </div>

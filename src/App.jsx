@@ -1,15 +1,16 @@
 import { useRef } from "react";
-import Hero from "./pages/Hero";
-import Projects from "./pages/Projects";
+import Hero from "./components/Hero";
+import Projects from "./components/Projects";
 import gsap from "gsap";
+import About from "./components/About";
+import { useCursorFollower } from "./context/CursorFollower";
 
 const App = () => {
   const main = useRef(null);
-  const followCursor = useRef(null);
+  const cursorFollower = useCursorFollower();
 
   const handleMouseMove = (e) => {
-    console.log(e);
-    gsap.to(followCursor.current, {
+    gsap.to(cursorFollower.current, {
       x: e.clientX,
       y: e.clientY,
       opacity: 1,
@@ -17,13 +18,19 @@ const App = () => {
   };
 
   return (
-    <div ref={main} onMouseMove={(e) => handleMouseMove(e)}>
+    <div
+      ref={main}
+      onMouseMove={(e) => handleMouseMove(e)}
+      className="min-h-screen w-screen"
+    >
       <div
-        className="h-2 w-2 rounded-full bg-white absolute z-10 top-0 left-0 opacity-0"
-        ref={followCursor}
+        className="h-3 w-3 rounded-full bg-white fixed top-0 left-0 opacity-0 flex justify-center items-center text-black font-medium z-[50] pointer-events-none"
+        ref={cursorFollower}
       ></div>
       <Hero />
+      <About />
       <Projects />
+      <div className="h-screen"></div>
     </div>
   );
 };
