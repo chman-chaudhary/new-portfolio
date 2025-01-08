@@ -7,3 +7,11 @@
     0 10px 10px -5px rgba(42, 51, 70, 0.03),
     0 24px 24px -8px rgba(42, 51, 70, 0.03);
 }
+
+.skill-item {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.skill-item .scale-2 .name {
+  opacity: 1;
+}

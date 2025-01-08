@@ -4,6 +4,7 @@ import Projects from "./components/Projects";
 import gsap from "gsap";
 import About from "./components/About";
 import { useCursorFollower } from "./context/CursorFollower";
+import Skills from "./components/Skills";
 
 const App = () => {
   const main = useRef(null);
@@ -27,10 +28,10 @@ const App = () => {
         className="h-3 w-3 rounded-full bg-white fixed top-0 left-0 opacity-0 flex justify-center items-center text-black font-medium z-[50] pointer-events-none"
         ref={cursorFollower}
       ></div>
-      <Hero />
+      {/* <Hero />
       <About />
-      <Projects />
-      <div className="h-screen"></div>
+      <Projects /> */}
+      <Skills />
     </div>
   );
 };

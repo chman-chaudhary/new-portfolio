@@ -82,8 +82,9 @@ const Hero = () => {
           to="about"
           duration={400}
           style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 text-end py-5 text-transparent hover:text-[rgb(235,235,235)] uppercase"
+          className="rotate-180 w-full text-end py-5 text-transparent hover:text-[rgb(235,235,235)] uppercase"
           onMouseEnter={() => handleMouseEnter(0)}
+          onMouseLeave={() => stopAudio(0)}
         >
           About
         </Link>
@@ -92,29 +93,33 @@ const Hero = () => {
           to="projects"
           duration={700}
           style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
+          className="rotate-180 w-full text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
           onMouseEnter={() => handleMouseEnter(1)}
+          onMouseLeave={() => stopAudio(1)}
         >
           Projects
         </Link>
         <div
           style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
+          className="w-full rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
           onMouseEnter={() => handleMouseEnter(2)}
+          onMouseLeave={() => stopAudio(2)}
         >
           Skills
         </div>
         <div
           style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
+          className="w-full rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
           onMouseEnter={() => handleMouseEnter(3)}
+          onMouseLeave={() => stopAudio(3)}
         >
           Contact
         </div>
         <div
           style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
+          className="w-full rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
           onMouseEnter={() => handleMouseEnter(4)}
+          onMouseLeave={() => stopAudio(4)}
         >
           Hire Me
         </div>
