@@ -76,7 +76,7 @@ const Hero = () => {
           CHAUDHARY
         </div>
       </div>
-      <nav className="origin-bottom-left flex flex-col items-start -rotate-90 text-8xl font-semibold translate-x-96 z-[1]">
+      <nav className="flex flex-col items-start text-8xl origin-bottom-left -rotate-90 font-semibold translate-x-[35rem] z-[1]">
         <Link
           smooth={true}
           to="about"
@@ -113,7 +113,7 @@ const Hero = () => {
           onMouseEnter={() => handleMouseEnter(3)}
           onMouseLeave={() => stopAudio(3)}
         >
-          Contact
+          Certificates
         </div>
         <div
           style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
@@ -121,7 +121,7 @@ const Hero = () => {
           onMouseEnter={() => handleMouseEnter(4)}
           onMouseLeave={() => stopAudio(4)}
         >
-          Hire Me
+          Contact
         </div>
       </nav>
       {image && (
