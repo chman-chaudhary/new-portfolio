@@ -43,7 +43,7 @@ const Skills = () => {
         start: "top 0%",
         end: "top -100%",
         pin: true,
-        scrub: 5,
+        scrub: 1,
         onUpdate: updateScaling,
       },
     });

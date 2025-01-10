@@ -81,8 +81,10 @@ const Certificate = () => {
               idx > 0 && "border-t border-white"
             }`}
           >
-            <span className="text-5xl">{certificate.name}</span>
-            <span className="text-xl font-light">{certificate.by}</span>
+            <span className="text-5xl text-end">{certificate.name}</span>
+            <span className="text-xl font-light text-start">
+              {certificate.by}
+            </span>
           </div>
         ))}
       </div>

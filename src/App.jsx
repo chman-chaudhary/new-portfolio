@@ -6,6 +6,7 @@ import About from "./components/About";
 import { useCursorFollower } from "./context/CursorFollower";
 import Skills from "./components/Skills";
 import Certificate from "./components/Certificates";
+import Contact from "./components/Contact";
 
 const App = () => {
   const main = useRef(null);
@@ -34,6 +35,7 @@ const App = () => {
       <Projects />
       <Skills />
       <Certificate />
+      <Contact />
     </div>
   );
 };
