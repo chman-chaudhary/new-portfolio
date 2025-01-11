@@ -1,6 +1,12 @@
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef, useState } from "react";
 import { Link } from "react-scroll";
+
+const NavLinkStyle =
+  "rotate-180 w-full text-end py-5 text-transparent hover:text-[rgb(235,235,235)] uppercase";
+
+const NavLinks = ["about", "projects", "skills", "certificate", "contact"];
 
 const Hero = () => {
   const audioRefs = useRef([
@@ -12,7 +18,9 @@ const Hero = () => {
   ]);
   const [image, setImage] = useState(null);
   const heroImage = useRef(null);
+  const heroParentContainer = useRef(null);
   const heroContainer = useRef(null);
+  const LoadingText = useRef(null);
 
   const handleMouseMove = (e) => {
     if (heroImage.current) {
@@ -54,83 +62,93 @@ const Hero = () => {
     playAudio(i);
   };
 
+  useGSAP(
+    () => {
+      const textHTML = LoadingText.current.textContent
+        .split("")
+        .map((char) =>
+          char === " "
+            ? "<span class='char'>&nbsp;</span>"
+            : `<span class="char">${char}</span>`
+        )
+        .join("");
+
+      LoadingText.current.innerHTML = textHTML;
+
+      const loadingTl = gsap.timeline();
+
+      loadingTl.from(".char", {
+        display: "none",
+        opacity: 0,
+        stagger: 0.1, // Delay for characters before the current one
+        duration: 0.05,
+        ease: "none",
+        delay: 1,
+      });
+
+      loadingTl.from(heroContainer.current, {
+        y: "100vh",
+        duration: 1,
+        delay: 0.5,
+        ease: "expo.out",
+      });
+    },
+    { scope: heroParentContainer, dependencies: [] }
+  );
+
   return (
-    <div
-      name="hero"
-      className="h-screen w-full flex justify-between items-end mb-40"
-      ref={heroContainer}
-      onMouseMove={(e) => handleMouseMove(e)}
-      onMouseLeave={() => setImage(null)}
-    >
-      <div className="h-screen flex flex-col justify-around px-20 z-[1]">
-        <div className="text-5xl">
-          coder,
-          <br />
-          developer,
-          <br />
-          tech enthusiast:
-        </div>
-        <div className="text-3xl">
-          CHAMAN
-          <br />
-          CHAUDHARY
-        </div>
+    <div ref={heroParentContainer} className="max-h-screen overflow-hidden">
+      <div
+        ref={LoadingText}
+        className="absolute h-screen w-full flex justify-center items-center text-4xl font-semibold uppercase bg-white text-black text-center border-2 border-black"
+      >
+        Welcome to the portfolio of
       </div>
-      <nav className="flex flex-col items-start text-8xl origin-bottom-left -rotate-90 font-semibold translate-x-[35rem] z-[1]">
-        <Link
-          smooth={true}
-          to="about"
-          duration={400}
-          style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 w-full text-end py-5 text-transparent hover:text-[rgb(235,235,235)] uppercase"
-          onMouseEnter={() => handleMouseEnter(0)}
-          onMouseLeave={() => stopAudio(0)}
-        >
-          About
-        </Link>
-        <Link
-          smooth={true}
-          to="projects"
-          duration={700}
-          style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="rotate-180 w-full text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
-          onMouseEnter={() => handleMouseEnter(1)}
-          onMouseLeave={() => stopAudio(1)}
-        >
-          Projects
-        </Link>
-        <div
-          style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="w-full rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
-          onMouseEnter={() => handleMouseEnter(2)}
-          onMouseLeave={() => stopAudio(2)}
-        >
-          Skills
+      <div
+        name="hero"
+        className="h-screen w-full flex justify-between items-end mb-40 bg-black"
+        ref={heroContainer}
+        onMouseMove={(e) => handleMouseMove(e)}
+        onMouseLeave={() => setImage(null)}
+      >
+        <div className="h-screen flex flex-col justify-around px-20 z-[1]">
+          <div className="text-5xl">
+            coder,
+            <br />
+            developer,
+            <br />
+            tech enthusiast:
+          </div>
+          <div className="text-3xl">
+            CHAMAN
+            <br />
+            CHAUDHARY
+          </div>
         </div>
-        <div
-          style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="w-full rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
-          onMouseEnter={() => handleMouseEnter(3)}
-          onMouseLeave={() => stopAudio(3)}
-        >
-          Certificates
-        </div>
-        <div
-          style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
-          className="w-full rotate-180 text-end py-5 uppercase text-transparent hover:text-[rgb(235,235,235)]"
-          onMouseEnter={() => handleMouseEnter(4)}
-          onMouseLeave={() => stopAudio(4)}
-        >
-          Contact
-        </div>
-      </nav>
-      {image && (
-        <img
-          ref={heroImage}
-          src={image}
-          className="absolute w-[26rem] top-0 left-0 z-0 opacity-0"
-        ></img>
-      )}
+        <nav className="flex flex-col items-start text-8xl origin-bottom-left -rotate-90 font-semibold translate-x-[33rem] z-[1]">
+          {NavLinks.map((link, idx) => (
+            <Link
+              key={idx}
+              smooth={true}
+              to={link}
+              duration={400}
+              style={{ WebkitTextStroke: "2px rgb(235,235,235)" }}
+              className={NavLinkStyle}
+              onMouseEnter={() => handleMouseEnter(idx)}
+              onMouseLeave={() => stopAudio(idx)}
+            >
+              {link}
+            </Link>
+          ))}
+        </nav>
+        {image && (
+          <img
+            ref={heroImage}
+            src={image}
+            className="absolute w-[26rem] top-0 left-0 z-0 opacity-0"
+          ></img>
+        )}
+      </div>
     </div>
   );
 };

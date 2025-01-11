@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import gsap from "gsap";
