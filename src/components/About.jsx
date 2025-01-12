@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 const About = () => {
   const textRef = useRef(null);
@@ -16,8 +16,8 @@ const About = () => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(".char", {
       color: "white",
-      duration: 0.03,
-      stagger: 0.05, // Adjust stagger duration for desired speed
+      stagger: 0.1, // Delay for characters before the current one
+      duration: 0.05,
       ease: "none", // Ensure smooth character-by-character animation
       scrollTrigger: {
         trigger: ".aboutContainer",
