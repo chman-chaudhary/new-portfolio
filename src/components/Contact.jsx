@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
+import ArrowCircle from "./ArrowCircle";
 
 const Contact = () => {
   const ContactParent = useRef(null);
@@ -24,6 +25,7 @@ const Contact = () => {
     <div
       className="h-screen overflow-hidden text-[rgb(255,0,0)] flex flex-col justify-center items-center font-extrabold text-[10rem] uppercase relative mt-40"
       ref={ContactParent}
+      name="contact"
     >
       <div className="contactText translate-y-40">Thanks</div>
       <div className="mask bg-black h-32 w-screen absolute top-16 left-0"></div>
@@ -33,6 +35,7 @@ const Contact = () => {
       <div className="mask bg-black h-32 w-screen absolute top-80 left-0 z-[2]"></div>
       <div className="contactText -translate-y-44 z-[3]">Let's Talk</div>
       <div className="mask bg-black h-32 w-screen absolute top-[28rem] left-0 z-[3]"></div>
+      <ArrowCircle className={"bottom-10 left-[50%] -translate-x-[50%]"} />
     </div>
   );
 };

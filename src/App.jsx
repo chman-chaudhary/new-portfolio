@@ -8,7 +8,7 @@ import Skills from "./components/Skills";
 import Certificate from "./components/Certificates";
 import Contact from "./components/Contact";
 import Loading from "./components/Loading";
-import PortfolioSections from "./components/PortfolioSections";
+import ArrowCircle from "./components/ArrowCircle";
 
 const App = () => {
   const [ready, setReady] = useState(false);
@@ -34,8 +34,7 @@ const App = () => {
         className="h-3 w-3 rounded-full bg-white fixed top-0 left-0 opacity-0 flex justify-center items-center text-black font-medium z-[50] pointer-events-none"
         ref={cursorFollower}
       ></div>
-      <PortfolioSections />
-      {/* {ready ? (
+      {ready ? (
         <>
           <Hero />
           <About />
@@ -46,7 +45,7 @@ const App = () => {
         </>
       ) : (
         <Loading setReady={setReady} />
-      )} */}
+      )}
     </div>
   );
 };

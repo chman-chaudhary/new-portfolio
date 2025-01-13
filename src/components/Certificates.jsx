@@ -58,6 +58,7 @@ const Certificate = () => {
     <div
       className="h-screen w-full flex flex-col parentContainer mt-40 overflow-hidden"
       ref={certificateContainer}
+      name="certificate"
     >
       {currentCertificate && (
         <img
@@ -77,7 +78,7 @@ const Certificate = () => {
             key={idx}
             onMouseEnter={() => handleMouseEnter(certificate)}
             onMouseLeave={handleMouseLeave}
-            className={`certificates w-full text-center py-7 space-x-10 ${
+            className={`certificates w-full text-center py-7 space-x-10 hover:bg-white/10 hover:backdrop-blur-lg ${
               idx > 0 && "border-t border-white"
             }`}
           >
